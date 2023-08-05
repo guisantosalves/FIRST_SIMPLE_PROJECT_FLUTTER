@@ -1,5 +1,6 @@
+import 'package:first_app/dice_roller.dart';
 import 'package:flutter/material.dart';
-import 'package:first_app/text_style.dart';
+import 'package:first_app/dice_roller.dart';
 
 // basically when we use CONST we tell to the flutter that the
 // specific data can be cached into device memory
@@ -31,22 +32,23 @@ const startAlignment = Alignment.topLeft;
 const endAlignment = Alignment.bottomRight;
 
 class GradientContainer extends StatelessWidget {
-  const GradientContainer({super.key});
+  const GradientContainer({super.key, required this.colors});
+
+  GradientContainer.purple({super.key})
+      : colors = [Colors.orange, Colors.black45];
+
   // or we can write like this
   // const GradientContainer({key}): super(key: key)
+  final List<Color> colors;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(colors: [
-          Color.fromARGB(255, 26, 2, 80),
-          Color.fromARGB(255, 45, 7, 50)
-        ], begin: startAlignment, end: endAlignment),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+            colors: colors, begin: startAlignment, end: endAlignment),
       ),
-      child: const Center(
-        child: StyledText('guizaodozap'),
-      ),
+      child: const Center(child: DiceRoller()),
     );
   }
   // @override

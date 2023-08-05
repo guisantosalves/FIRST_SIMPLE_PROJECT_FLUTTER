@@ -10,10 +10,13 @@ import 'package:first_app/gradiente_container.dart';
 // dart data type https://dart.dev/language/built-in-types
 void main() {
   runApp(
-    const MaterialApp(
+    MaterialApp(
       home: Scaffold(
           // backgroundColor: Color.fromARGB(255, 47, 5, 120),
-          body: GradientContainer()),
+          body: GradientContainer(colors: [
+        Color.fromARGB(255, 26, 2, 30),
+        Color.fromARGB(255, 45, 7, 50)
+      ])),
     ),
   );
 }
