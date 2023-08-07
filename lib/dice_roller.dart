@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
+
+// making that because it's need to create the object once at time
+// that file is executed.
+final randomizer = Random();
 
 class DiceRoller extends StatefulWidget {
   const DiceRoller({super.key});
@@ -11,13 +16,13 @@ class DiceRoller extends StatefulWidget {
 
 // _ -> means that this file is private
 class _DiceRollerState extends State<DiceRoller> {
-  var activeDiceImage = 'assets/images/dice-1.png';
+  var currentDiceFace = 1;
 
   void rollDice() {
     setState(() {
-      activeDiceImage = 'assets/images/dice-4.png';
+      currentDiceFace = randomizer.nextInt(6) + 1;
     });
-    print('entrou');
+    // print('entrou');
   }
 
   @override
@@ -27,7 +32,7 @@ class _DiceRollerState extends State<DiceRoller> {
           MainAxisSize.min, // the main axis will take the min size possible
       children: [
         Image.asset(
-          activeDiceImage,
+          'assets/images/dice-$currentDiceFace.png',
           width: 200,
         ),
         const SizedBox(height: 10),
